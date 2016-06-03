@@ -10,6 +10,7 @@ import com.mattvalli.RapidFramework.dao.UserSystem.NameDao;
 @Transactional
 public class NameServiceImpl implements NameService {
 	
+	
 	// PROPERTIES
 	@Autowired
 	NameDao mNameDao;

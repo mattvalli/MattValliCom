@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import com.mattvalli.RapidFramework.Model.UserSystem.NameContainer;
+import com.mattvalli.RapidFramework.Model.UserSystem.Name;
 import com.mattvalli.RapidFramework.Model.UserSystem.Person;
 
 import junit.framework.TestCase;
@@ -34,9 +34,9 @@ public class TestCasePerson extends TestCase {
 		givenNamesAlicia.trimToSize();
 		
 		
-		mTestPersonPrimary 		= new Person(	new NameContainer(givenNamesMatt), 		LocalDate.of(1987, Month.MAY, 27)	);
-		mTestPersonCopy			= new Person(	new NameContainer(givenNamesMatt), 		LocalDate.of(1987, Month.MAY, 27)	);
-		mTestPersonDifferent	= new Person(	new NameContainer(givenNamesAlicia), 	LocalDate.of(1990, Month.MARCH, 11)	);
+		mTestPersonPrimary 		= new Person(	new Name(givenNamesMatt), 		LocalDate.of(1987, Month.MAY, 27)	);
+		mTestPersonCopy			= new Person(	new Name(givenNamesMatt), 		LocalDate.of(1987, Month.MAY, 27)	);
+		mTestPersonDifferent	= new Person(	new Name(givenNamesAlicia), 	LocalDate.of(1990, Month.MARCH, 11)	);
 	}
 	
 	// TEST CASES

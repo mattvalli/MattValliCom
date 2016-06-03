@@ -35,7 +35,7 @@ public class Person extends AbstractModelClass {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = PersonDao.JOIN_CONTAINER_NAME)
-	private NameContainer		 	mNames;
+	private Name		 	mNames;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = PersonDao.JOIN_GENDER)
@@ -53,7 +53,7 @@ public class Person extends AbstractModelClass {
 	
 	public Person(	String 				firstName,
 					String				lastName,
-					NameContainer	 	givenNames,
+					Name	 	givenNames,
 					Gender				gender,
 					LocalDate 			dateOfBirth	) {
 		// Set Class Properties
@@ -64,12 +64,12 @@ public class Person extends AbstractModelClass {
 	
 	public Person(	String				firstName,
 					String				lastName,
-					NameContainer	 	givenNames,
+					Name	 	givenNames,
 					LocalDate 			dateOfBirth	) {
 		this(firstName, lastName, givenNames, null, dateOfBirth);
 	}	
 	
-	public Person(	NameContainer	 	givenNames,
+	public Person(	Name	 	givenNames,
 					LocalDate 			dateOfBirth	) {
 		this(givenNames.getFirstName(), givenNames.getLastName(), givenNames, null, dateOfBirth);
 	}	
@@ -114,7 +114,7 @@ public class Person extends AbstractModelClass {
 		this.mDateOfBirth = dateOfBirth;
 	}
 	
-	public void setNameContainer(NameContainer nameContainer) {
+	public void setNameContainer(Name nameContainer) {
 		this.mNames = nameContainer;
 	}
 	
@@ -124,12 +124,12 @@ public class Person extends AbstractModelClass {
 		this.mFirstName = firstName;
 	}
 
-	public void setGivenName(int index, String name) {
-		this.mNames.setGivenName(index, name);
+	public void setName(int index, String name) {
+		this.mNames.setName(index, name);
 	}
 	
-	public void setGivenNames(ArrayList<Name> givenNames) {
-		this.mNames.setGivenNames(givenNames);
+	public void setNames(ArrayList<String> names) {
+		this.mNames.setNames(names);
 	}
 
 	public void setLastName(String lastName) {
@@ -156,7 +156,7 @@ public class Person extends AbstractModelClass {
 		return this.mDateOfBirth;
 	}
 	
-	public NameContainer getNameContainer() {
+	public Name getNameContainer() {
 		return this.mNames;
 	}
 	
@@ -166,16 +166,16 @@ public class Person extends AbstractModelClass {
 		return this.mFirstName;
 	}
 
-	public String getGivenName(int index) {
-		return mNames.getGivenName(index);
+	public String getName(int index) {
+		return mNames.getName(index);
 	}
 	
-	public List<Name> getGivenNames() {
-		return mNames.getGivenNames();
+	public List<String> getNames() {
+		return mNames.getNames();
 	}
 	
 	public String getGivenNamesAsString() {
-		return mNames.getGivenNamesAsString();
+		return mNames.getNamesAsString();
 	}
 
 	public String getLastName() {

@@ -3,15 +3,15 @@ package com.mattvalli.portfolio;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 
 import com.mattvalli.RapidFramework.Model.AbstractModelClass;
-import com.mattvalli.RapidFramework.Model.UserSystem.NameContainer;
+import com.mattvalli.RapidFramework.Model.UserSystem.Name;
 import com.mattvalli.RapidFramework.Model.UserSystem.Person;
-import com.mattvalli.portfolio.model.Author;
-import com.mattvalli.portfolio.model.Book;
 import com.mattvalli.portfolio.model.AssociateBookAuthor;
+import com.mattvalli.portfolio.model.Book;
 
 import junit.framework.TestCase;
 
@@ -25,11 +25,11 @@ public class TestCaseBook extends TestCase {
    // assigning the values
    protected void setUp(){
 	   ArrayList<AssociateBookAuthor> authors = new ArrayList<AssociateBookAuthor>();
-	   ArrayList<String> givenNames = new ArrayList<String>();
+	   List<String> givenNames = new ArrayList<String>();
 	   givenNames.add("Matthew");
 	   givenNames.add("R.");
 	   givenNames.add("Valli");
-	   authors.add(new AssociateBookAuthor(AbstractModelClass.INVALID_ID,null, new Person(new NameContainer(givenNames), LocalDate.of(1987,Month.MAY, 27))));
+	   authors.add(new AssociateBookAuthor(AbstractModelClass.INVALID_ID,null, new Person(new Name(givenNames), LocalDate.of(1987,Month.MAY, 27))));
 	   
 	   // Primary
       mTestBookPrimary 		= new Book(	1, 
