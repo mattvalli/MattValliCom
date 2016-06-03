@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import com.mattvalli.RapidFramework.Model.AbstractModelClass;
 import com.mattvalli.RapidFramework.Model.UserSystem.Person;
+import com.mattvalli.RapidFramework.Model.UserSystem.SocialMediaAccount;
 
 public class Portfolio extends AbstractModelClass {
 	// CONSTANTS

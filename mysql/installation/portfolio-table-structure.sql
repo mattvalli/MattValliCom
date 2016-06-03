@@ -6,6 +6,19 @@ CREATE DATABASE 	PORTFOLIO;
 -- Select the Porfolio Database to construct tables
 USE PORTFOLIO;
 
+-- EXAPMLE PROJECT
+DROP TABLE IF EXISTS EMPLOYEE;
+
+CREATE TABLE EMPLOYEE(
+    id INT NOT NULL auto_increment, 
+    name VARCHAR(50) NOT NULL,
+    joining_date DATE NOT NULL,
+    salary DOUBLE NOT NULL,
+    ssn VARCHAR(30) NOT NULL UNIQUE,
+    PRIMARY KEY (id)
+);
+-- EXAMPLE PROJECT
+
 -- TYPE_BUSINESS TABLE
 DROP TABLE IF EXISTS		TYPE_BUSINESS;
 
@@ -134,6 +147,54 @@ CREATE TABLE 	PORTFOLIO(									id 							BIGINT NOT NULL AUTO_INCREMENT				,
 -- CREATE TABLE PORTFOLIO(id BIGINT NOT NULL AUTO_INCREMENT, display_name VARCHAR(125), title VARCHAR(125), fk_person BIGINT, fk_subject BIGINT, PRIMARY KEY(id));
 
 
+-- PROJECT TABLE
+DROP TABLE IF EXISTS		PROJECT;
+
+CREATE TABLE 	PROJECT(									id 							BIGINT NOT NULL AUTO_INCREMENT				,
+															display_name 				VARCHAR(125)								,
+															name 						VARCHAR(125)								,
+															description					VARCHAR(250)								,
+															url_github_repository		VARCHAR(125)								,
+															url_live_project			VARCHAR(125)								,
+											PRIMARY KEY		(id)																	);
+
+-- CREATE TABLE PROJECT(id BIGINT NOT NULL AUTO_INCREMENT, display_name VARCHAR(125), name VARCHAR(125), description VARCHAR(250), url_github_repository VARCHAR(125), url_live_project VARCHAR(125), PRIMARY KEY(id));
+
+-- RESOURCE TABLE
+DROP TABLE IF EXISTS		RESOURCE;
+
+CREATE TABLE 	RESOURCE(									id 							BIGINT NOT NULL AUTO_INCREMENT 				, 
+															display_name 				VARCHAR(125)								, 
+															url 						VARCHAR(125)								, 
+															fk_type_resource 			SMALLINT									,
+											PRIMARY KEY		(id)																	);
+
+-- CREATE TABLE RESOURCE(id BIGINT NOT NULL AUTO_INCREMENT, display_name VARCHAR(125), url VARCHAR(125), fk_resource_type SMALLINT, PRIMARY KEY(id));
+
+
+-- SKILL TABLE
+DROP TABLE IF EXISTS		SKILL;
+
+CREATE TABLE 	SKILL(										id 							BIGINT NOT NULL AUTO_INCREMENT 				, 
+															display_name 				VARCHAR(125)								, 
+															description 				VARCHAR(250)								, 
+											PRIMARY KEY		(id)																	);
+
+-- CREATE TABLE SKILL(id BIGINT NOT NULL AUTO_INCREMENT, display_name VARCHAR(125), description VARCHAR(250), PRIMARY KEY(id));
+
+
+-- TUTORIAL TABLE
+DROP TABLE IF EXISTS		TUTORIAL;
+
+CREATE TABLE 	TUTORIAL(									id 							BIGINT NOT NULL AUTO_INCREMENT 				, 
+															display_name 				VARCHAR(125)								, 
+															subtitle 					VARCHAR(125)								, 
+															fk_subject 					BIGINT										, 
+															content 					TEXT										, 
+											PRIMARY KEY		(id)																	);
+
+-- CREATE TABLE TUTORIAL(id BIGINT NOT NULL AUTO_INCREMENT, display_name VARCHAR(125), subtitle VARCHAR(125), fk_subject BIGINT, content TEXT, PRIMARY KEY(id));
+
 
 
 -- ASSOCIATE_BOOK_AUTHOR
@@ -169,7 +230,7 @@ CREATE TABLE 	ASSOCIATE_BOOK_SECTION(						id 							BIGINT NOT NULL AUTO_INCREM
 
 -- CREATE TABLE ASSOCIATE_BOOK_AUTHOR(id BIGINT NOT NULL AUTO_INCREMENT, fk_chapter BIGINT, fk_section BIGINT, KEY(id));
 
--- ASSOCIATE_BOOK_AUTHOR
+-- ASSOCIATE_SUBJECT_BOOK
 DROP TABLE IF EXISTS		ASSOCIATE_SUBJECT_BOOK;
 
 CREATE TABLE 	ASSOCIATE_SUBJECT_BOOK(						id 							BIGINT NOT NULL AUTO_INCREMENT				,
@@ -179,6 +240,18 @@ CREATE TABLE 	ASSOCIATE_SUBJECT_BOOK(						id 							BIGINT NOT NULL AUTO_INCREM
 											PRIMARY KEY		(id)																	);
 
 -- CREATE TABLE ASSOCIATE_BOOK_AUTHOR(id BIGINT NOT NULL AUTO_INCREMENT, fk_subject BIGINT, fk_book BIGINT, fk_log_modification BIGINT, PRIMARY KEY(id));
+
+
+-- ASSOCIATE_SUBJECT_TUTORIAL
+DROP TABLE IF EXISTS		ASSOCIATE_SUBJECT_TUTORIAL;
+
+CREATE TABLE 	ASSOCIATE_SUBJECT_TUTORIAL(					id 							BIGINT NOT NULL AUTO_INCREMENT				,
+															fk_subject					BIGINT										,
+															fk_tutorial 				BIGINT										,
+															fk_log_modification			BIGINT										,
+											PRIMARY KEY		(id)																	);
+
+-- CREATE TABLE ASSOCIATE_SUBJECT_TUTORIAL(id BIGINT NOT NULL AUTO_INCREMENT, fk_subject BIGINT, fk_tutorial BIGINT, fk_log_modification BIGINT, PRIMARY KEY(id));
 
 
 -- ASSOCIATE_PERSON_PORTFOLIO

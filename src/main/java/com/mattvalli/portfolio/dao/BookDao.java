@@ -11,4 +11,5 @@ public interface BookDao {
 		public static final String COLUMN_ISBN			= "isbn";
 		public static final String COLUMN_DESC			= "description";
 		public static final String COLUMN_COVER_IMG		= "fk_url_cover_img";
+		public static final String JOIN_TABLE			= "NEEDS SETUP";
 }

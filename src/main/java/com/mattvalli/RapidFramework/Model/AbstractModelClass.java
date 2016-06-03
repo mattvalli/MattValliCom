@@ -37,7 +37,8 @@ public abstract class AbstractModelClass {
 	// METHODS
 	
 	// SETTERS
-	public void setId(Integer id) {
+	@SuppressWarnings("unused")
+	private void setId(Integer id) {
 		this.mId = id;
 	}
 	

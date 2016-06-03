@@ -3,6 +3,7 @@ package com.mattvalli.portfolio.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -14,6 +15,7 @@ import com.mattvalli.portfolio.dao.TutorialDao;
 public class Tutorial extends AbstractModelClass {
 	// PROPERTIES
 	@OneToMany(mappedBy = TutorialDao.TABLE, cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = TutorialDao.JOIN_SUBJECT)
 	private Subject mSubject;
 	
 	@Column(name = TutorialDao.COLUMN_SUBTITLE)

@@ -4,11 +4,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.mattvalli.RapidFramework.Model.AbstractModelClass;
 import com.mattvalli.RapidFramework.dao.UserSystem.AddressDao;
 
 @Entity
 @Table(name = AddressDao.DATABASE + "." + AddressDao.TABLE)
-public class Address {
+public class Address extends AbstractModelClass {
 	// CONSTANTS
 	
 	// PROPERTIES

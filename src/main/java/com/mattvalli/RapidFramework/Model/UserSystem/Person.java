@@ -2,9 +2,14 @@ package com.mattvalli.RapidFramework.Model.UserSystem;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -18,23 +23,26 @@ public class Person extends AbstractModelClass {
 	// CONSTANTS
 	
 	// PROPERTIES
-	@Column(name = PersonDao.COLUMN_NAME_FIRST, nullable = false)
+	@Column(name = PersonDao.COLUMN_NAME_FIRST)
 	private String					mFirstName;
 	
-	@Column(name = PersonDao.COLUMN_NAME_LAST, nullable = false)
+	@Column(name = PersonDao.COLUMN_NAME_LAST)
 	private String					mLastName;
 	
 	@DateTimeFormat(pattern = PersonDao.DATE_FORMAT)
-	@Column(name = PersonDao.COLUMN_DOB, nullable = true)
+	@Column(name = PersonDao.COLUMN_DOB)
 	private LocalDate				mDateOfBirth;
 	
-	@Column(name = PersonDao.COLUMN_NAME_GIVEN, nullable = true)
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = PersonDao.JOIN_CONTAINER_NAME)
 	private NameContainer		 	mNames;
 	
-	@Column(name = PersonDao.COLUMN_GENDER, nullable = false)
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = PersonDao.JOIN_GENDER)
 	private Gender					mGender;
 	
-	@Column(name = PersonDao.COLUMN_CONTACT, nullable = true)
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = PersonDao.JOIN_CONTACT)
 	private Contact					mContact;
 
 	
@@ -58,17 +66,17 @@ public class Person extends AbstractModelClass {
 					String				lastName,
 					NameContainer	 	givenNames,
 					LocalDate 			dateOfBirth	) {
-		this(firstName, lastName, givenNames, Gender.UNSPECIFIED, dateOfBirth);
+		this(firstName, lastName, givenNames, null, dateOfBirth);
 	}	
 	
 	public Person(	NameContainer	 	givenNames,
 					LocalDate 			dateOfBirth	) {
-		this(givenNames.getFirstName(), givenNames.getLastName(), givenNames, Gender.UNSPECIFIED, dateOfBirth);
+		this(givenNames.getFirstName(), givenNames.getLastName(), givenNames, null, dateOfBirth);
 	}	
 	
 	public Person( 	String firstName,
 					String lastName		) {
-		this(firstName, lastName, null, Gender.UNSPECIFIED, null);
+		this(firstName, lastName, null, null, null);
 	}
 	
 	// OVERRIDES
@@ -120,7 +128,7 @@ public class Person extends AbstractModelClass {
 		this.mNames.setGivenName(index, name);
 	}
 	
-	public void setGivenNames(ArrayList<String> givenNames) {
+	public void setGivenNames(ArrayList<Name> givenNames) {
 		this.mNames.setGivenNames(givenNames);
 	}
 
@@ -162,7 +170,7 @@ public class Person extends AbstractModelClass {
 		return mNames.getGivenName(index);
 	}
 	
-	public ArrayList<String> getGivenNames() {
+	public List<Name> getGivenNames() {
 		return mNames.getGivenNames();
 	}
 	

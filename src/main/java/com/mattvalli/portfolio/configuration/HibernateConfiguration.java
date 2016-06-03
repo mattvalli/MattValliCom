@@ -34,7 +34,7 @@ public class HibernateConfiguration {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSourcePortfolio());
-        sessionFactory.setPackagesToScan(new String[] { "com.mattvalli.portfolio.model" });
+        sessionFactory.setPackagesToScan(new String[] { "com.mattvalli.portfolio.model", "com.mattvalli.RapidFramework" });
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
      }
@@ -43,7 +43,7 @@ public class HibernateConfiguration {
     public LocalSessionFactoryBean sessionFactoryUserSystem() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSourceUserSystem());
-        sessionFactory.setPackagesToScan(new String[] { "com.mattvalli.RapidFramework.Model" });
+        sessionFactory.setPackagesToScan(new String[] { "com.mattvalli.RapidFramework.Model", "com.mattvalli.RapidFramework" });
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
      }

@@ -93,6 +93,32 @@ CREATE TABLE 	PERSON(								id							BIGINT UNSIGNED		NOT NULL	AUTO_INCREMENT	,
 
 -- CREATE TABLE PERSON(id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT, name_prefix VARCHAR(4), name_first VARCHAR(60), name_last VARCHAR(60), name_postfix VARCHAR(5), date_birth DATE, fk_container_name BIGINT UNSIGNED, fk_gender TINYINT UNSIGNED, display_name VARCHAR(60), fk_log_modification BIGINT UNSIGNED, PRIMARY KEY(id), FOREIGN KEY(fk_container_name) REFERENCES CONTAINER_NAME(id), FOREIGN KEY(fk_log_modification) REFERENCES LOG_MODIFICATION(id), INDEX index_person_by_last_first_name(name_last,name_first,date_birth), INDEX index_person_by_date_of_birth(date_birth));
 
+-- SOCIAL_MEDIA_ACCOUNT TABLE
+DROP TABLE IF EXISTS		SOCIAL_MEDIA_ACCOUNT;
+-- *************************************************************************************************************************************************************		
+-- ****************************************************														****************************************************	
+-- ****************************************************														****************************************************	
+-- ****************************************************		fk_person 										****************************************************	
+-- ****************************************************		IS CURRENTLY SUBSTITUTED AS:					****************************************************	
+-- ****************************************************		VARCHAR 										****************************************************	
+-- ****************************************************		INSTEAD OF:										****************************************************	
+-- ****************************************************		BIGINT											****************************************************	
+-- ****************************************************														****************************************************	
+-- ****************************************************		MODIFY AFTER LINKING DATABASE:					****************************************************	
+-- ****************************************************			- PORFOLIO									****************************************************		
+-- ****************************************************			- USER_SYSTEM								****************************************************	
+-- ****************************************************														****************************************************	
+-- ****************************************************														****************************************************		
+-- *************************************************************************************************************************************************************		
+CREATE TABLE 	SOCIAL_MEDIA_ACCOUNT(						id 							BIGINT NOT NULL AUTO_INCREMENT, 
+															fk_person					VARCHAR(125),
+															display_name 				VARCHAR(125), 
+															account_provider 			VARCHAR(12), 
+															username 					VARCHAR(125), 
+															credentials 				TEXT, 
+											PRIMARY KEY		(id)																	);
+
+-- CREATE TABLE SOCIAL_MEDIA_ACCOUNT(id BIGINT NOT NULL AUTO_INCREMENT, display_name VARCHAR(125), fk_person BIGINT, account_provider VARCHAR(12), username VARCHAR(125), credentials TEXT, PRIMARY KEY(id));
 
 
 
@@ -213,7 +239,7 @@ CREATE TABLE CONTACT(								id 							BIGINT UNSIGNED NOT NULL AUTO_INCREMENT		
 													fk_phone_home 				BIGINT										, 
 													fk_phone_mobile_primary 	BIGINT										, 
 													fk_phone_mobile_secondary 	BIGINT										, 
-													fk_phone_work_office 		BIGINT										, 
+													fk_phone_work 		 		BIGINT										, 
 													fk_phone_work_mobile 		BIGINT										, 
 													fk_address_home 			BIGINT										, 
 													fk_address_perminent 		BIGINT										, 

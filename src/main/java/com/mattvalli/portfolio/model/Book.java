@@ -3,6 +3,7 @@ package com.mattvalli.portfolio.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,13 +37,13 @@ public class Book extends AbstractModelClass {
 	
 	
 	//@OneToMany(mappedBy = CLASSNAME, cascade = CascadeType.ALL, orphanRemoval = true)
-	public ArrayList<AssociateBookAuthor> mAuthors;
+	public List<AssociateBookAuthor> mAuthors;
 	
 	//@OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
-	public ArrayList<String> mTableOfConents;
+	public List<String> mTableOfConents;
 	
 	
-	public HashMap<String,Chapter> mChapters;
+	public List<Chapter> mChapters;
 	
 	
 	// CONSTRUCTORS
@@ -112,7 +113,7 @@ public class Book extends AbstractModelClass {
 	public void setSubtitle(String subtitle) {
 		this.mSubtitle = subtitle;
 	}
-	public void setAuthors(ArrayList<AssociateBookAuthor> authors) {
+	public void setAuthors(List<AssociateBookAuthor> authors) {
 		this.mAuthors = authors;
 	}
 	public void setISBN(String iSBN) {
@@ -129,7 +130,7 @@ public class Book extends AbstractModelClass {
 	public String getSubtitle() {
 		return this.mSubtitle;
 	}
-	public ArrayList<AssociateBookAuthor> getAuthors() {
+	public List<AssociateBookAuthor> getAuthors() {
 		return this.mAuthors;
 	}
 	public String getISBN() {
