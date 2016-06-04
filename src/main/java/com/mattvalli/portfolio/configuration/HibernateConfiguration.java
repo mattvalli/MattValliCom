@@ -39,6 +39,7 @@ public class HibernateConfiguration {
         return sessionFactory;
      }
     
+    /*
     @Bean
     public LocalSessionFactoryBean sessionFactoryUserSystem() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
@@ -47,6 +48,7 @@ public class HibernateConfiguration {
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
      }
+    */
      
     /* Instantiates and configures a DataSource Object for accessing a database
      * 

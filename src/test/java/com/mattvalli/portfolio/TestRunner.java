@@ -19,8 +19,10 @@ public class TestRunner implements Runnable {
 	}
 	
 	// IMPLEMENTATION
+	
 	public void run() {
-		Result result = JUnitCore.runClasses( 	TestSuiteModelClasses.class,
+		Result result = JUnitCore.runClasses( 	// vvv UNCOMMENT TO ADD THE PORTFOLIO MODEL TEST SUITE
+												//TODO TestSuiteModelClasses.class, 
 												TestSuiteJUnit.class 			);
 		// Get the Failures
 		

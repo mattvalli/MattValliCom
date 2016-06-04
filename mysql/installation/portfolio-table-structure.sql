@@ -6,6 +6,9 @@ CREATE DATABASE 	PORTFOLIO;
 -- Select the Porfolio Database to construct tables
 USE PORTFOLIO;
 
+-- Merge Rapid Framework
+source /usr/local/apache-tomcat-8.0.26/webapps/MattValliCom/mysql/installation/rapid-framework-table-structure.sql;
+
 -- EXAPMLE PROJECT
 DROP TABLE IF EXISTS EMPLOYEE;
 

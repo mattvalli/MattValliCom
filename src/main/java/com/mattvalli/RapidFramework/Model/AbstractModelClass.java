@@ -10,8 +10,6 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.mattvalli.RapidFramework.Model.UserSystem.ModificationLog;
-
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class AbstractModelClass {
@@ -32,7 +30,7 @@ public abstract class AbstractModelClass {
 	
 	
 	// @OneToMany 
-	protected ModificationLog mModificationLog;
+	//protected ModificationLog mModificationLog;
 	
 	// METHODS
 	
@@ -46,9 +44,11 @@ public abstract class AbstractModelClass {
 		this.mDisplayName = displayName;
 	}
 	
+	/*
 	public void setModificationLog(ModificationLog log) {
 		this.mModificationLog	= log;
 	}
+	*/
 	
 	// GETTERS
 	public Integer getId() {
@@ -59,8 +59,10 @@ public abstract class AbstractModelClass {
 		return this.mDisplayName;
 	}
 	
+	/*
 	public ModificationLog getModificationLog() {
 		return this.mModificationLog;
 	}
+	*/
 	
 }
