@@ -3,6 +3,7 @@ package com.mattvalli.RapidFramework.Model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -20,8 +21,8 @@ public abstract class AbstractModelClass {
 	
 	// PROPERTIES
 	@Id
-	@GeneratedValue(generator="increment")
-	@GenericGenerator(name="increment", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	@Column(name = "id")
 	protected Integer 			mId;
 	
 	@NotNull

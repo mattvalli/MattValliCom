@@ -2,9 +2,9 @@ package com.mattvalli.portfolio.controller;
 
 import java.util.List;
 import java.util.Locale;
- 
+
 import javax.validation.Valid;
- 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,9 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
- 
+
+import com.mattvalli.RapidFramework.UserSystem.model.Name;
+import com.mattvalli.RapidFramework.UserSystem.service.NameService;
 import com.mattvalli.portfolio.model.Employee;
 import com.mattvalli.portfolio.service.EmployeeService;
  
@@ -22,10 +24,15 @@ import com.mattvalli.portfolio.service.EmployeeService;
 @RequestMapping("/")
 public class AppController {
  
-	/* Service Classes used by the AppController
+	/* employeeService Classes used by the AppController
 	 */
     @Autowired
-    EmployeeService service;
+    EmployeeService employeeService;
+    
+    /* nameService Class is used to query the Database for Name Objects
+     */
+    @Autowired
+    NameService nameService;
     
     /* MessageSource is used for Internationalization of Strings throughout the application
      */
@@ -38,11 +45,24 @@ public class AppController {
     @RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
     public String listEmployees(ModelMap model) {
  
-        List<Employee> employees = service.findAllEmployees();
+        List<Employee> employees = employeeService.findAllEmployees();
         model.addAttribute("employees", employees);
         return "allemployees";
     }
  
+    /*
+     * 
+     */
+    @RequestMapping(value = "/list-names", method = RequestMethod.GET)
+    public String listNames(ModelMap model) {
+    	// Use the Name employeeService to retrieve all the 'Names' from the DataSource/Database
+    	List<Name> names = nameService.findAllNames();
+    	model.addAttribute("names", names);
+    	
+    	System.out.println("NAMES:\n" + names.toString());
+    	return "list-names";
+    }
+    
     /*
      * This method will provide the medium to add a new employee.
      */
@@ -74,13 +94,13 @@ public class AppController {
          * framework as well while still using internationalized messages.
          * 
          */
-        if(!service.isEmployeeSsnUnique(employee.getId(), employee.getSsn())){
+        if(!employeeService.isEmployeeSsnUnique(employee.getId(), employee.getSsn())){
             FieldError ssnError =new FieldError("employee","ssn",messageSource.getMessage("non.unique.ssn", new String[]{employee.getSsn()}, Locale.getDefault()));
             result.addError(ssnError);
             return "registration";
         }
          
-        service.saveEmployee(employee);
+        employeeService.saveEmployee(employee);
  
         model.addAttribute("success", "Employee " + employee.getName() + " registered successfully");
         return "success";
@@ -92,7 +112,7 @@ public class AppController {
      */
     @RequestMapping(value = { "/edit-{ssn}-employee" }, method = RequestMethod.GET)
     public String editEmployee(@PathVariable String ssn, ModelMap model) {
-        Employee employee = service.findEmployeeBySsn(ssn);
+        Employee employee = employeeService.findEmployeeBySsn(ssn);
         model.addAttribute("employee", employee);
         model.addAttribute("edit", true);
         return "registration";
@@ -110,13 +130,13 @@ public class AppController {
             return "registration";
         }
  
-        if(!service.isEmployeeSsnUnique(employee.getId(), employee.getSsn())){
+        if(!employeeService.isEmployeeSsnUnique(employee.getId(), employee.getSsn())){
             FieldError ssnError =new FieldError("employee","ssn",messageSource.getMessage("non.unique.ssn", new String[]{employee.getSsn()}, Locale.getDefault()));
             result.addError(ssnError);
             return "registration";
         }
  
-        service.updateEmployee(employee);
+        employeeService.updateEmployee(employee);
  
         model.addAttribute("success", "Employee " + employee.getName()  + " updated successfully");
         return "success";
@@ -128,7 +148,7 @@ public class AppController {
      */
     @RequestMapping(value = { "/delete-{ssn}-employee" }, method = RequestMethod.GET)
     public String deleteEmployee(@PathVariable String ssn) {
-        service.deleteEmployeeBySsn(ssn);
+        employeeService.deleteEmployeeBySsn(ssn);
         return "redirect:/list";
     }
  

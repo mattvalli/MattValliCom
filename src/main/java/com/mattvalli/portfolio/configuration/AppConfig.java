@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.JstlView;
  
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.mattvalli.portfolio")
+@ComponentScan(basePackages = { "com.mattvalli.portfolio" , "com.mattvalli.RapidFramework" })
 public class AppConfig {
 	
     @Bean
