@@ -1,4 +1,4 @@
-package com.mattvalli.portfolio.service;
+package com.mattvalli.RapidFramework.Model.UserSystem.service;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public interface NameService {
 	Name findNameById(Integer id);
     Name findName(String name);
     
-    List<Name> findAllEmployees(); 
+    List<Name> findAllNames(); 
     
      
     // UPDATE

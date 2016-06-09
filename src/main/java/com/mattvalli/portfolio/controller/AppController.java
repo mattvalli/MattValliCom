@@ -15,14 +15,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mattvalli.RapidFramework.UserSystem.model.Name;
-import com.mattvalli.RapidFramework.UserSystem.service.NameService;
+import com.mattvalli.RapidFramework.Model.UserSystem.model.Name;
+import com.mattvalli.RapidFramework.Model.UserSystem.service.NameService;
 import com.mattvalli.portfolio.model.Employee;
 import com.mattvalli.portfolio.service.EmployeeService;
  
 @Controller
 @RequestMapping("/")
 public class AppController {
+	// CONSTANTS
+	public static final Boolean DEBUG_HIBERNATE_COLLECTIONS = false;
  
 	/* employeeService Classes used by the AppController
 	 */
@@ -39,28 +41,20 @@ public class AppController {
     @Autowired
     MessageSource messageSource;
  
+    @RequestMapping(value = { "/" }, method = RequestMethod.GET)
+    public String homepage() {
+    	return "index";
+    }
+    
     /*
      * This method will list all existing employees.
      */
-    @RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/list" }, method = RequestMethod.GET)
     public String listEmployees(ModelMap model) {
  
         List<Employee> employees = employeeService.findAllEmployees();
         model.addAttribute("employees", employees);
         return "allemployees";
-    }
- 
-    /*
-     * 
-     */
-    @RequestMapping(value = "/list-names", method = RequestMethod.GET)
-    public String listNames(ModelMap model) {
-    	// Use the Name employeeService to retrieve all the 'Names' from the DataSource/Database
-    	List<Name> names = nameService.findAllNames();
-    	model.addAttribute("names", names);
-    	
-    	System.out.println("NAMES:\n" + names.toString());
-    	return "list-names";
     }
     
     /*

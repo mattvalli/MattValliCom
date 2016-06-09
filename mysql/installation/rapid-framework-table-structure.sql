@@ -2,6 +2,11 @@
 -- CREATE DATABASE 			USER_SYSTEM;
 -- USE 						USER_SYSTEM;
 
+-- HIBERNATE TABLES
+DROP TABLE IF EXISTS		HIBERNATE_SEQUENCES;
+CREATE TABLE 	HIBERNATE_SEQUENCES (				sequence_name 				VARCHAR(255)									,
+													sequence_next_hi_value 		INTEGER										    );
+
 -- SYSTEM LEVEL TABLES
 -- LOG_MODIFICATION
 DROP TABLE IF EXISTS		LOG_MODIFICATION;
@@ -61,6 +66,7 @@ DROP TABLE IF EXISTS		ASSOCIATE_NAME;
 CREATE TABLE	ASSOCIATE_NAME(						id 							BIGINT UNSIGNED		NOT NULL	AUTO_INCREMENT	,
 													fk_container_name			BIGINT UNSIGNED									,
 													fk_name						BIGINT UNSIGNED									,
+													name 						VARCHAR(60)										,
 													order_sort					TINYINT UNSIGNED								,
 									PRIMARY	KEY		(id)																		,
 									FOREIGN KEY 	(fk_container_name)			REFERENCES	 	CONTAINER_NAME(id)				,
@@ -366,6 +372,6 @@ source /usr/local/apache-tomcat-8.0.26/webapps/MattValliCom/mysql/enums/enums-po
 source /usr/local/apache-tomcat-8.0.26/webapps/MattValliCom/mysql/views/rapid-framework-views.sql;
 
 -- IF TESTING
-source /usr/local/apache-tomcat-8.0.26/webapps/MattValliCom/mysql/test-data/test-data.sql;
+-- source /usr/local/apache-tomcat-8.0.26/webapps/MattValliCom/mysql/test-data/test-data.sql;
 
 SHOW TABLES;

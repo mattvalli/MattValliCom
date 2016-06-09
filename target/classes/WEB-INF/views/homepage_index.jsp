@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>MattValli.com</title>
+<title>${title}</title>
 </head>
 <body>
-	<h1>Matt Valli's Portfolio</h1>
+<h1>Welcome to ${website}</h1>
+${mainContent}
 </body>
 </html>

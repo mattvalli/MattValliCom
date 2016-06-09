@@ -102,15 +102,18 @@ public class HibernateConfiguration {
     private Properties hibernateProperties() {
     	
     	if (DEBUG_CONFIGURATION) {
-    		System.out.println("Hibernate Dialect: " + environment.getRequiredProperty("hibernate.dialect"));
-    		System.out.println("Hibernate Dialect: " + environment.getRequiredProperty("hibernate.show_sql"));
-    		System.out.println("Hibernate Dialect: " + environment.getRequiredProperty("hibernate.format_sql"));
+    		System.out.println("Hibernate.dialect: " 		+ environment.getRequiredProperty("hibernate.dialect")		);
+    		System.out.println("Hibernate.show_sql: " 		+ environment.getRequiredProperty("hibernate.show_sql")		);
+    		System.out.println("Hibernate.format_sql: " 	+ environment.getRequiredProperty("hibernate.format_sql")	);
+    		System.out.println("Hibernate.hbm2ddl.auto: " 	+ environment.getRequiredProperty("hibernate.hbm2ddl.auto")	);
+    		
     	}
     	
         Properties properties = new Properties();
         properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
         properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
         properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
+        //properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
         return properties;        
     }
      
