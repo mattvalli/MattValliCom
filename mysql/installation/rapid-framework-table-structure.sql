@@ -50,8 +50,8 @@ CREATE TABLE 	NAME(								id 							BIGINT UNSIGNED 	NOT NULL 	AUTO_INCREMENT	,
 DROP TABLE IF EXISTS 		CONTAINER_NAME;
 
 CREATE TABLE	CONTAINER_NAME(						id 							BIGINT UNSIGNED 	NOT NULL 	AUTO_INCREMENT	,
-													name_prefix					VARCHAR(4)										,
-													name_postfix				VARCHAR(5)										,
+													name_prefix					VARCHAR(15)										,
+													name_postfix				VARCHAR(15)										,
 													display_name				VARCHAR(60)										,
 													fk_log_modification			BIGINT UNSIGNED									,
 									PRIMARY KEY		(id)																		,

@@ -23,7 +23,8 @@ public class Name extends AbstractModelClass {
 	// PROPERTIES
 	// VALIDATION
 		// Validate Field Size
-		@Size(min=2, max = 4)
+		@Size(	min	=	2	, 
+				max = 	15	)
 	// HIBERNATE
 		// Define Table Column 
 		@Column(name = NameContainerDao.COLUMN_PREFIX)
@@ -32,7 +33,8 @@ public class Name extends AbstractModelClass {
 	
 	// VALIDATION
 		// Validate Field Size
-		//@Size(min=2, max = 4)
+		@Size(	min	=	2	, 
+				max = 	15	)
 	// HIBERNATE
 		// Define Table Column
 		@Column(name = NameContainerDao.COLUMN_POSTFIX)
